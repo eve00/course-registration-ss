@@ -32,6 +32,8 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+
     //mongoDB
     implementation("org.litote.kmongo:kmongo-coroutine:$kmongo_version")
 
