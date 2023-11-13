@@ -8,6 +8,6 @@ import com.example.util.BaseResponse
 class DeleteApplicationUseCase(private val applicationsRepository: ApplicationsRepository) :
     BaseUseCase<Application, Any> {
     override suspend fun invoke(input: Application): BaseResponse<Any> {
-        return applicationsRepository.deleteApplication(input.applicatonId)   }
+        return applicationsRepository.deleteApplication(input.applicatonId ?:"")   }
 
 }
