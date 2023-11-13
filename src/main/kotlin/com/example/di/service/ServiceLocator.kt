@@ -1,12 +1,12 @@
 package com.example.di.service
 
-import com.example.feature.apply.Application
 import com.example.feature.apply.service.ApplicationApiService
 import com.example.feature.apply.service.ApplicationApiServiceImpl
-import org.litote.kmongo.coroutine.CoroutineCollection
+import com.mongodb.client.MongoCollection
+import org.bson.Document
 
 object ServiceLocator {
-    fun provideApplicationApiService(applicationCollection: CoroutineCollection<Application>): ApplicationApiService {
+    fun provideApplicationApiService(applicationCollection: MongoCollection<Document>): ApplicationApiService {
         return ApplicationApiServiceImpl(applicationCollection)
     }
 

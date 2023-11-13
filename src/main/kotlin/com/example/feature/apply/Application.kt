@@ -7,7 +7,7 @@ import org.bson.types.ObjectId
 
 @Serializable
 data class Application(
-    @SerialName("_id")
+    @SerialName("id")
     @Contextual val id: ObjectId?,
     val userId: String? = null,
     val courseId: String? = null,

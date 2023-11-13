@@ -17,7 +17,7 @@ class ApplicationApiServiceImpl(
     }
 
     override suspend fun deleteApplication(applicationId: String): Boolean {
-        return applicationCollection.deleteOne(Filters.eq("_id", applicationId)).wasAcknowledged()
+        return applicationCollection.deleteOne(Filters.eq("id", applicationId)).wasAcknowledged()
     }
 
 }
