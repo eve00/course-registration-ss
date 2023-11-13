@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
-val kmongo_version: String by project
+val mongodb_version: String by project
 
 
 plugins {
@@ -32,13 +32,17 @@ repositories {
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
+    implementation("io.ktor:ktor-server-content-negotiation-jvm")
+    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
     implementation("io.ktor:ktor-server-resources:$ktor_version")
     implementation("io.ktor:ktor-serialization:$ktor_version")
 
     //mongoDB
-    implementation("org.litote.kmongo:kmongo-coroutine:$kmongo_version")
+    implementation("org.mongodb:mongodb-driver-sync:$mongodb_version")
+    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:$mongodb_version")
+    implementation("org.mongodb:bson-kotlinx:$mongodb_version")
+
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")

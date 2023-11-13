@@ -1,17 +1,19 @@
 package com.example.base.database
 
-import com.example.feature.apply.Application
-import org.litote.kmongo.coroutine.CoroutineClient
-import org.litote.kmongo.coroutine.CoroutineCollection
-import org.litote.kmongo.coroutine.CoroutineDatabase
+import com.mongodb.MongoClientSettings
+import com.mongodb.client.MongoClient
+import com.mongodb.client.MongoCollection
+import com.mongodb.client.MongoDatabase
+import org.bson.Document
 
 interface Database {
+    val uri: String
     val initializeName: String
+    val clientSettings: MongoClientSettings
+    val mongoClient: MongoClient
 
-    val mongoClient: CoroutineClient
+    val database: MongoDatabase
 
-    val database: CoroutineDatabase
-
-    val applicationColelction: CoroutineCollection<Application>
+    val applicationColelction: MongoCollection<Document>
 
 }

@@ -9,6 +9,8 @@ object DatabaseLocator {
     }
 
     fun provideDatabase(): Database {
-        return DatabaseImpl(provideClientName())
+        return DatabaseImpl(provideClientName(), APPLICATIONS_COLLECTION)
     }
+
+    private val APPLICATIONS_COLLECTION = "applications"
 }
