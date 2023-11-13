@@ -1,7 +1,7 @@
 package com.example.di.database
 
-import com.example.plugins.database.Database
-import com.example.plugins.database.DatabaseImpl
+import com.example.base.database.Database
+import com.example.base.database.DatabaseImpl
 
 object DatabaseLocator {
     private fun provideClientName(): String {
