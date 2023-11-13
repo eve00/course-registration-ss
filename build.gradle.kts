@@ -9,6 +9,7 @@ val kmongo_version: String by project
 
 plugins {
     kotlin("jvm") version "1.8.20"
+    kotlin("plugin.serialization") version "1.8.20"
     id("io.ktor.plugin") version "2.2.4"
 }
 
@@ -33,6 +34,8 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-server-resources:$ktor_version")
+    implementation("io.ktor:ktor-serialization:$ktor_version")
 
     //mongoDB
     implementation("org.litote.kmongo:kmongo-coroutine:$kmongo_version")
