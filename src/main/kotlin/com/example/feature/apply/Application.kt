@@ -7,7 +7,7 @@ import org.bson.types.ObjectId
 @Serializable
 data class Application(
     @BsonId
-    val applicatonId: String = ObjectId().toString(),
+    val applicatonId: String? = ObjectId().toString(),
     val userId: String? = null,
     val courseId: String? = null,
     val createdAt: String? = null,

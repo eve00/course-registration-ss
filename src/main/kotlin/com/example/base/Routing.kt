@@ -1,16 +1,23 @@
 package com.example.base
 
-import com.example.di.repository.RepositoryLocator
-import com.example.di.service.ServiceLocator
-import com.example.di.service.ServiceLocator.provideApplicationApiService
-import io.ktor.server.application.*
-import io.ktor.server.resources.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
+import com.example.di.domain.DomainLocator
 import com.example.feature.apply.applicationsRoute
+import io.ktor.server.application.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.resources.*
+import io.ktor.server.routing.*
+import org.litote.kmongo.json
 
-fun Application.configureRouting() {
-    applicationsRoute(domainLocator.provideDomainProvider())
+val domainLocator = DomainLocator
+fun Application.configureRoutingAndSerialization() {
+    install(Resources)
+    install(ContentNegotiation) {
+        json
+    }
+    routing {
+        applicationsRoute(domainLocator.provideDomainProvider())
+
+    }
   /*  routing {
         get("/") {
             call.respondText("Hello World!")
