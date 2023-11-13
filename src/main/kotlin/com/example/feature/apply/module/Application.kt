@@ -1,6 +1,5 @@
-package com.example.feature.apply
+package com.example.feature.apply.module
 
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.bson.types.ObjectId
@@ -8,7 +7,7 @@ import org.bson.types.ObjectId
 @Serializable
 data class Application(
     @SerialName("id")
-    @Contextual val id: ObjectId?,
+    val id: String? = ObjectId().toString(),
     val userId: String? = null,
     val courseId: String? = null,
     val createdAt: String? = null,

@@ -42,10 +42,13 @@ dependencies {
     implementation("org.mongodb:mongodb-driver-sync:$mongodb_version")
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:$mongodb_version")
     implementation("org.mongodb:bson-kotlinx:$mongodb_version")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
 
 
     testImplementation("io.ktor:ktor-server-tests-jvm")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("io.ktor:ktor-server-test-host:$ktor_version")
+
+    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
 }
 
 
