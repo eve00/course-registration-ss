@@ -12,17 +12,15 @@ import io.ktor.server.routing.*
 
 @Resource("/applications")
 class Applications() {
-    @Resource("new")
-    class New()
 
     @Resource("{id}")
-    class Id()
+    class Id(val parent: Applications = Applications(), val id: Long)
 }
 
 fun Route.applicationsRoute(
     domainProvider: DomainProvider
 ) {
-    post<Applications.New> {
+    post<Applications> {
         val application = getBodyContent<Application>()
         val response = domainProvider.provideCreateApplicationUseCase().invoke(application)
         call.respond(response)
