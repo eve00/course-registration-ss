@@ -15,7 +15,7 @@ class ApplicationsRepositoryImpl(
     override suspend fun createApplication(userId: String, courseId: String): BaseResponse<Any> {
         val isCreated = applicationApiService.createApplication(userId, courseId)
         return if (isCreated) {
-            return SuccessResponse(statusCode = HttpStatusCode.Created)
+            SuccessResponse(statusCode = HttpStatusCode.Created)
         } else {
             throw exceptionHandler.respondWithSomethingWentWrongException()
 

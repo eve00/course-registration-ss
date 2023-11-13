@@ -1,21 +1,31 @@
 package com.example.base.database
 
-import com.example.feature.apply.Application
-import org.litote.kmongo.coroutine.CoroutineClient
-import org.litote.kmongo.coroutine.CoroutineCollection
-import org.litote.kmongo.coroutine.CoroutineDatabase
-import org.litote.kmongo.coroutine.coroutine
-import org.litote.kmongo.reactivestreams.KMongo
+import CONNECTION_STRING_URI_PLACEHOLDER
+import com.mongodb.ConnectionString
+import com.mongodb.MongoClientSettings
+import com.mongodb.client.MongoClient
+import com.mongodb.client.MongoClients
+import com.mongodb.client.MongoCollection
+import com.mongodb.client.MongoDatabase
+import org.bson.Document
 
-class DatabaseImpl(private val clientName: String) : Database {
+
+class DatabaseImpl(private val clientName: String, private val collectionName: String) : Database {
+    override val uri: String
+        get() =CONNECTION_STRING_URI_PLACEHOLDER
     override val initializeName: String
         get() = clientName
-    override val mongoClient: CoroutineClient
-        get() = KMongo.createClient().coroutine
 
-    override val database: CoroutineDatabase
+    override val clientSettings: MongoClientSettings
+        get() = MongoClientSettings.builder()
+            .applyConnectionString(ConnectionString("mongodb://localhost:27017"))
+            .build()
+
+    override val mongoClient: MongoClient
+        get() = MongoClients.create(clientSettings)
+
+    override val database: MongoDatabase
         get() = mongoClient.getDatabase(initializeName)
-    override val applicationColelction: CoroutineCollection<Application>
-        get() = database.getCollection()
-
+    override val applicationColelction: MongoCollection<Document>
+        get() = database.getCollection(collectionName)
 }

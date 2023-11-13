@@ -6,13 +6,14 @@ import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.resources.*
 import io.ktor.server.routing.*
-import org.litote.kmongo.json
+import io.ktor.serialization.kotlinx.json.*
+
 
 val domainLocator = DomainLocator
 fun Application.configureRoutingAndSerialization() {
     install(Resources)
     install(ContentNegotiation) {
-        json
+        json()
     }
     routing {
         applicationsRoute(domainLocator.provideDomainProvider())
