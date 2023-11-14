@@ -10,7 +10,7 @@ import com.mongodb.client.MongoDatabase
 import org.bson.Document
 
 
-class DatabaseImpl(private val clientName: String, private val collectionName: String) : Database {
+class DatabaseImpl(private val clientName: String) : Database {
     override val uri: String
         get() =CONNECTION_STRING_URI_PLACEHOLDER
     override val initializeName: String
@@ -26,6 +26,14 @@ class DatabaseImpl(private val clientName: String, private val collectionName: S
 
     override val database: MongoDatabase
         get() = mongoClient.getDatabase(initializeName)
+
     override val applicationColelction: MongoCollection<Document>
-        get() = database.getCollection(collectionName)
+        get() = database.getCollection(APPLICATIONS_COLLECTION)
+    override val courseCollection: MongoCollection<Document>
+        get() = database.getCollection(COURSES_COLLECTION)
+
+    companion object {
+        private const val APPLICATIONS_COLLECTION = "applications"
+        private const val COURSES_COLLECTION = "courses"
+    }
 }

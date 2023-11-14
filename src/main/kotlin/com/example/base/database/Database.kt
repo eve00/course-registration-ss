@@ -15,5 +15,6 @@ interface Database {
     val database: MongoDatabase
 
     val applicationColelction: MongoCollection<Document>
+    val courseCollection: MongoCollection<Document>
 
 }
