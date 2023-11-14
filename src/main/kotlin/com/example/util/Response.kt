@@ -1,6 +1,6 @@
 package com.example.util
 
-import com.example.feature.apply.module.ApplicationResponse
+import com.example.feature.applications.module.ApplicationResponse
 import io.ktor.http.*
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.PrimitiveKind

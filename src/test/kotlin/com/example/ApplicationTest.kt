@@ -1,6 +1,6 @@
 package com.example
 
-import com.example.feature.apply.module.Application
+import com.example.feature.applications.module.Application
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.http.*
