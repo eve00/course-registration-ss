@@ -1,4 +1,4 @@
-package com.example.feature.apply.service
+package com.example.feature.applications.service
 
 interface ApplicationApiService {
 
