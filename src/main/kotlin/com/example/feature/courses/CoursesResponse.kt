@@ -1,7 +1,7 @@
-package com.example.feature.applications
+package com.example.feature.courses
 
 import com.example.feature.courses.module.CourseListResponse
-import com.example.feature.courses.module.RegistrationListResponse
+import com.example.feature.courses.module.RegistrationRequestResponse
 import com.example.util.responseModule
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
@@ -15,9 +15,9 @@ val courseListResponseModule = SerializersModule {
         subclass(CourseListResponse::class)
     }
 }
-val registrationListResponseModule = SerializersModule {
+val registrationRequestResponseModule = SerializersModule {
     polymorphic(Any::class) {
-        subclass(RegistrationListResponse::class)
+        subclass(RegistrationRequestResponse::class)
     }
 }
 
@@ -27,6 +27,6 @@ val formatCourses = Json {
 }
 
 val formatRegistrations = Json {
-    serializersModule = responseModule + registrationListResponseModule
+    serializersModule = responseModule + registrationRequestResponseModule
 
 }

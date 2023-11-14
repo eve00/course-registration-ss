@@ -1,9 +1,7 @@
 package com.example.feature.courses
 
 import com.example.di.domain.DomainProvider
-import com.example.feature.applications.formatCourses
-import com.example.feature.applications.formatRegistrations
-import com.example.feature.courses.module.Registration
+import com.example.feature.courses.module.RegistrationRequest
 import com.example.util.getBodyContent
 import io.ktor.resources.*
 import io.ktor.server.application.*
@@ -15,10 +13,7 @@ import kotlinx.serialization.json.encodeToJsonElement
 
 
 @Resource("/courses")
-class Courses(){
-    @Resource("{id}")
-    class Id()
-}
+class Courses()
 
 fun Route.coursesRoute(
     domainProvider: DomainProvider
@@ -28,8 +23,8 @@ fun Route.coursesRoute(
         call.respond(formatCourses.encodeToJsonElement(response))
     }
 
-    post<Courses.Id> {
-        val registrations = getBodyContent<List<Registration>>()
+    post<Courses> {
+        val registrations = getBodyContent<RegistrationRequest>()
         val response = domainProvider.provideCreateRegistrationsUseCase().invoke(registrations)
         call.respond(formatRegistrations.encodeToJsonElement(response))
     }
