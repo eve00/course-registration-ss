@@ -4,6 +4,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Registration(
-    val userId: String? = null,
+    val userId: String = "",
+)
+
+@Serializable
+data class RegistrationRequest(
     val courseId: String? = null,
+    val studentIds: List<String> = emptyList(),
 )
