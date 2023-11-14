@@ -2,6 +2,7 @@ package com.example.feature.courses.repository
 
 import com.example.base.http.ExceptionHandler
 import com.example.feature.courses.module.CourseListResponse
+import com.example.feature.courses.module.Registration
 import com.example.feature.courses.service.CourseManagementApiService
 import com.example.util.BaseResponse
 import com.example.util.SuccessResponse
@@ -21,7 +22,7 @@ class CoursesRepositoryImpl(
         }
     }
 
-    override suspend fun createCourseRegistrations(studentIds: List<String>): BaseResponse<Any> {
+    override suspend fun createCourseRegistrations(studentIds: List<Registration>): BaseResponse<Any> {
         val isCreated = courseManagementApiservice.createRegistrations(studentIds)
         return if (isCreated) {
             SuccessResponse(statusCode = HttpStatusCode.Created)

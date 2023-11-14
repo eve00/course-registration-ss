@@ -1,6 +1,5 @@
 package com.example.util
 
-import com.example.feature.applications.module.ApplicationResponse
 import io.ktor.http.*
 import kotlinx.serialization.*
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -8,9 +7,7 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.plus
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
 
@@ -42,17 +39,6 @@ val responseModule = SerializersModule {
         subclass(SuccessResponse.serializer(PolymorphicSerializer(Any::class)))
         subclass(UnSuccessResponse.serializer(PolymorphicSerializer(Any::class)))
     }
-}
-
-val applicationInfoModule = SerializersModule {
-        polymorphic(Any::class) {
-            subclass(ApplicationResponse::class)
-        }
-    }
-
-
-val formatApplicationsInfo = Json {
-    serializersModule = responseModule + applicationInfoModule
 }
 
 

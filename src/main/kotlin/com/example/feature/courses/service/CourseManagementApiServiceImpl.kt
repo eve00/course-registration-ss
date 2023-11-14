@@ -1,6 +1,7 @@
 package com.example.feature.courses.service
 
 import com.example.feature.courses.module.Course
+import com.example.feature.courses.module.Registration
 import com.mongodb.client.MongoCollection
 import org.bson.Document
 
@@ -18,7 +19,7 @@ class CourseManagementApiServiceImpl(private val coursesCollection: MongoCollect
         }
     }
 
-    override suspend fun createRegistrations(studentIds: List<String>): Boolean {
+    override suspend fun createRegistrations(studentIds: List<Registration>): Boolean {
         val registration = studentIds.map{id -> Document().append("userId", id) }
         return coursesCollection.insertMany(registration).wasAcknowledged()    }
 }

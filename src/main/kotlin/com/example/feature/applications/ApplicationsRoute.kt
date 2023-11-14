@@ -3,7 +3,6 @@ package com.example.feature.applications
 
 import com.example.di.domain.DomainProvider
 import com.example.feature.applications.module.Application
-import com.example.util.formatApplicationsInfo
 import com.example.util.getBodyContent
 import io.ktor.resources.*
 import io.ktor.server.application.*

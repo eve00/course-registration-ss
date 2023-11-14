@@ -2,6 +2,7 @@ package com.example.base
 
 import com.example.di.domain.DomainLocator
 import com.example.feature.applications.applicationsRoute
+import com.example.feature.courses.coursesRoute
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
@@ -17,13 +18,7 @@ fun Application.configureRoutingAndSerialization() {
     }
     routing {
         applicationsRoute(domainLocator.provideDomainProvider())
-
+        coursesRoute(domainLocator.provideDomainProvider())
     }
-  /*  routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
 
-
-    }*/
 }
