@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CourseListResponse(
-    val cats: List<Course> = emptyList()
+    val courses: List<Course> = emptyList()
 )
