@@ -1,8 +1,10 @@
 package com.example.di.domain
 
 import com.example.di.repository.RepositoryProvider
-import com.example.feature.apply.domain.CreateApplicationUseCase
-import com.example.feature.apply.domain.DeleteApplicationUseCase
+import com.example.feature.applications.domain.CreateApplicationUseCase
+import com.example.feature.applications.domain.DeleteApplicationUseCase
+import com.example.feature.courses.domain.CreateRegistrationsUseCase
+import com.example.feature.courses.domain.GetAllCoursesUseCase
 
 class DomainProviderImpl(private val repositoryProvider: RepositoryProvider): DomainProvider {
     override fun provideCreateApplicationUseCase(): CreateApplicationUseCase {
@@ -11,5 +13,13 @@ class DomainProviderImpl(private val repositoryProvider: RepositoryProvider): Do
 
     override fun provideDeleteApplicationUseCase(): DeleteApplicationUseCase {
         return DomainLocator.provideDeleteApplicationUseCase(repositoryProvider.provideApplicationsRepository())
+    }
+
+    override fun provideGetAllCoursesUseCase(): GetAllCoursesUseCase {
+       return  DomainLocator.provideGetAllCoursesUseCase(repositoryProvider.provideCoursesRepository())
+    }
+
+    override fun provideCreateRegistrationsUseCase(): CreateRegistrationsUseCase {
+        return  DomainLocator.provideCreateRegistrationsUseCase(repositoryProvider.provideCoursesRepository())
     }
 }
