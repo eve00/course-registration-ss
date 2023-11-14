@@ -14,11 +14,7 @@ import io.ktor.server.routing.*
 import kotlinx.serialization.json.encodeToJsonElement
 
 @Resource("/applications")
-class Applications() {
-
-    @Resource("{id}")
-    class Id(val parent: Applications = Applications(), val id: Long)
-}
+class Applications()
 
 fun Route.applicationsRoute(
     domainProvider: DomainProvider
@@ -29,10 +25,10 @@ fun Route.applicationsRoute(
         call.respond(formatApplicationsInfo.encodeToJsonElement(response))
     }
 
-    delete<Applications.Id> { id ->
+    delete<Applications> {
         val application = getBodyContent<Application>()
         val response = domainProvider.provideDeleteApplicationUseCase().invoke(application)
-        call.respond(response)
+        call.respond(formatApplicationsInfo.encodeToJsonElement(response))
 
     }
 }

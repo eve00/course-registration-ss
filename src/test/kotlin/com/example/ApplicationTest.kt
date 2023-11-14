@@ -37,4 +37,28 @@ class ApplicationTest {
         assertEquals(HttpStatusCode.OK, response.status)
     }
 
+    @Test
+    fun testDeleteApplication() = testApplication {
+
+        val client = createClient {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+        val id = ""
+        val response = client.delete("/applications") {
+            contentType(ContentType.Application.Json)
+            setBody(
+                Application(
+                    id = id,
+                    userId = "anonymous",
+                    courseId = "something",
+                    createdAt = Date().toInstant().toString(),
+                    updatedAt = Date().toInstant().toString()
+                )
+            )
+        }
+        assertEquals(HttpStatusCode.OK, response.status)
+    }
+
 }
