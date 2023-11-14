@@ -1,4 +1,4 @@
-package com.example.feature.apply.service
+package com.example.feature.applications.service
 
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.model.Filters

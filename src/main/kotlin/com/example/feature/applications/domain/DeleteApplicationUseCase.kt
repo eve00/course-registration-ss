@@ -1,8 +1,8 @@
-package com.example.feature.apply.domain
+package com.example.feature.applications.domain
 
 import com.example.base.BaseUseCase
-import com.example.feature.apply.module.Application
-import com.example.feature.apply.repository.ApplicationsRepository
+import com.example.feature.applications.module.Application
+import com.example.feature.applications.repository.ApplicationsRepository
 import com.example.util.BaseResponse
 import io.ktor.server.response.*
 

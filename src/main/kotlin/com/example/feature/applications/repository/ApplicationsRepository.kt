@@ -1,4 +1,4 @@
-package com.example.feature.apply.repository
+package com.example.feature.applications.repository
 
 import com.example.util.BaseResponse
 

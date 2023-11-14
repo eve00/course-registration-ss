@@ -1,4 +1,4 @@
-package com.example.feature.apply.module
+package com.example.feature.applications.module
 
 import kotlinx.serialization.Serializable
 

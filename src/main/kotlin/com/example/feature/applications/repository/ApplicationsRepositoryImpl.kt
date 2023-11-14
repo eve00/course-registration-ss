@@ -1,7 +1,7 @@
-package com.example.feature.apply.repository
+package com.example.feature.applications.repository
 
 import com.example.base.http.ExceptionHandler
-import com.example.feature.apply.service.ApplicationApiService
+import com.example.feature.applications.service.ApplicationApiService
 import com.example.util.BaseResponse
 import com.example.util.SuccessResponse
 import io.ktor.http.*

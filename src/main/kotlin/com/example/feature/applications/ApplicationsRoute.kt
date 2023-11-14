@@ -1,9 +1,8 @@
-package com.example.feature.apply
+package com.example.feature.applications
 
 
 import com.example.di.domain.DomainProvider
-import com.example.feature.apply.module.Application
-import com.example.util.formatApplicationsInfo
+import com.example.feature.applications.module.Application
 import com.example.util.getBodyContent
 import io.ktor.resources.*
 import io.ktor.server.application.*
@@ -21,14 +20,23 @@ fun Route.applicationsRoute(
 ) {
     post<Applications> {
         val application = getBodyContent<Application>()
+        when(application.format){
+            "advance" -> {
+
+            }
+            "firstserved" -> {
+
+
+            }
+        }
         val response = domainProvider.provideCreateApplicationUseCase().invoke(application)
         call.respond(formatApplicationsInfo.encodeToJsonElement(response))
+
     }
 
     delete<Applications> {
         val application = getBodyContent<Application>()
         val response = domainProvider.provideDeleteApplicationUseCase().invoke(application)
         call.respond(formatApplicationsInfo.encodeToJsonElement(response))
-
     }
 }
