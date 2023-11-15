@@ -3,6 +3,7 @@ package com.example
 import com.example.feature.courses.module.RegistrationRequest
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.testing.*
@@ -10,7 +11,14 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 class RegistrationTest {
+    @Test
+    fun testGetCourses() = testApplication {
 
+
+        val response = client.get("/courses")
+        println(response.bodyAsText())
+        assertEquals(HttpStatusCode.OK, response.status)
+    }
 
     @Test
     fun testCreateRegistration() = testApplication {
@@ -34,6 +42,8 @@ class RegistrationTest {
         }
         assertEquals(HttpStatusCode.OK, response.status)
     }
+
+
 
 
 }

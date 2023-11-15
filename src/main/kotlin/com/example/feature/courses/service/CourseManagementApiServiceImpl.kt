@@ -25,9 +25,6 @@ class CourseManagementApiServiceImpl(private val coursesCollection: MongoCollect
             Filters.eq("_id", request.courseId),
         ).toList()[0].get("studentIds") as List<String>
 
-        println(studentIds)
-        println(studentIdsData)
-
         val data = if (studentIdsData.isEmpty()) {
             studentIds
         } else {
