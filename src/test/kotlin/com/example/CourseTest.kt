@@ -10,7 +10,7 @@ import io.ktor.server.testing.*
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class RegistrationTest {
+class CourseTest {
     @Test
     fun testGetCourses() = testApplication {
 
