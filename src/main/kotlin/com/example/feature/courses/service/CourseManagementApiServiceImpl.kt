@@ -29,7 +29,12 @@ class CourseManagementApiServiceImpl(private val coursesCollection: MongoCollect
         ).toList()[0].getInteger("capacity")
         val drawedRequestData = when(capacity < request.studentIds.size){
             //ランダム抽選
-            true -> request.studentIds.shuffled().subList(0,capacity-1)
+            true -> {
+                request.studentIds.shuffled().subList(0, capacity - 1)
+                /*TODO
+                * 他の申請をキャンセルする
+                * */
+            }
             false -> request.studentIds
         }
 
