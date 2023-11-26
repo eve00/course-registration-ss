@@ -20,17 +20,25 @@ class CourseManagementApiServiceImpl(private val coursesCollection: MongoCollect
     }
 
     override suspend fun updateCourseRegistrations(request: RegistrationRequest): Boolean {
-        val studentIds: List<String> = request.studentIds
-        val studentIdsData = coursesCollection.find(
+        val studentIds = coursesCollection.find(
             Filters.eq("_id", request.courseId),
         ).toList()[0].get("studentIds") as List<String>
 
-        val data = if (studentIdsData.isEmpty()) {
-            studentIds
-        } else {
-            listOf(studentIdsData, studentIds).flatten()
+        val capacity = coursesCollection.find(
+            Filters.eq("_id", request.courseId),
+        ).toList()[0].getInteger("capacity")
+        val drawedRequestData = when(capacity < request.studentIds.size){
+            //ランダム抽選
+            true -> request.studentIds.shuffled().subList(0,capacity-1)
+            false -> request.studentIds
         }
-        println()
+
+
+        val data = if (studentIds.isEmpty()) {
+            drawedRequestData
+        } else {
+            listOf(studentIds, drawedRequestData).flatten()
+        }
         return coursesCollection.updateOne(
             Filters.eq("_id", request.courseId),
             Updates.set("studentIds", data)

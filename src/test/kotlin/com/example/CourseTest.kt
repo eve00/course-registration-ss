@@ -28,7 +28,7 @@ class CourseTest {
                 json()
             }
         }
-        val registrations = listOf("hoge1","hoge2", "hoge3")
+        val registrations = listOf("hoge1","hoge2", "hoge3","hoge4","hoge5",)
         val request = RegistrationRequest(
             courseId = "00001",
             studentIds = registrations

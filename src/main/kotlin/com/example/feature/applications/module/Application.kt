@@ -7,7 +7,7 @@ data class Application(
     val id: String? = null,
     val userId: String? = null,
     val courseId: String? = null,
-    val format: Format,
+    val format: Format = Format.Common,
     val createdAt: String? = null,
     val updatedAt: String? = null,
 )
