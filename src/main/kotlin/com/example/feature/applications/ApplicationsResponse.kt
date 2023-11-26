@@ -1,5 +1,6 @@
 package com.example.feature.applications
 
+import com.example.feature.applications.module.ApplicationListResponse
 import com.example.feature.applications.module.ApplicationResponse
 import com.example.util.responseModule
 import kotlinx.serialization.json.Json
@@ -15,7 +16,16 @@ val applicationInfoModule = SerializersModule {
     }
 }
 
+val applicationListResponseModule = SerializersModule {
+    polymorphic(Any::class) {
+        subclass(ApplicationListResponse::class)
+    }
+}
+
 
 val formatApplicationsInfo = Json {
     serializersModule = responseModule + applicationInfoModule
+}
+val applicationsInfo = Json {
+    serializersModule = responseModule + applicationListResponseModule
 }
