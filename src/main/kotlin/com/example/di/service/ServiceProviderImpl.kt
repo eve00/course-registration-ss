@@ -6,7 +6,8 @@ import com.example.feature.courses.service.CourseManagementApiService
 
 class ServiceProviderImpl : ServiceProvider {
     override fun provideApplicationApiService(): ApplicationApiService {
-        return ServiceLocator.provideApplicationApiService(DatabaseLocator.provideDatabase().applicationColelction)
+        return ServiceLocator.provideApplicationApiService(DatabaseLocator.provideDatabase().applicationColelction,
+            DatabaseLocator.provideDatabase().courseCollection)
     }
 
     override fun provideCourseManagementApiService(): CourseManagementApiService {

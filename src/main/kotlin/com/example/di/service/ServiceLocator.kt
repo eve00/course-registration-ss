@@ -8,8 +8,8 @@ import com.mongodb.client.MongoCollection
 import org.bson.Document
 
 object ServiceLocator {
-    fun provideApplicationApiService(applicationCollection: MongoCollection<Document>): ApplicationApiService {
-        return ApplicationApiServiceImpl(applicationCollection)
+    fun provideApplicationApiService(applicationCollection: MongoCollection<Document>, coursesCollection: MongoCollection<Document>): ApplicationApiService {
+        return ApplicationApiServiceImpl(applicationCollection, coursesCollection)
     }
     fun provideCourseManagementApiService(coursesCollection: MongoCollection<Document>): CourseManagementApiService {
         return CourseManagementApiServiceImpl(coursesCollection)
