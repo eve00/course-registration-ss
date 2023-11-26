@@ -10,8 +10,8 @@ class CreateApplicationUseCase(private val applicationsRepository: ApplicationsR
     BaseUseCase<Application, ApplicationResponse> {
     // TODO: ?:外す
     override suspend fun invoke(input: Application): BaseResponse<ApplicationResponse> {
-return applicationsRepository.createApplication(userId = input.userId ?: "", courseId = input.courseId ?: "")
-        as BaseResponse<ApplicationResponse>
+        return applicationsRepository.createApplication(userId = input.userId ?: "", courseId = input.courseId ?: "", format = input.format)
+                as BaseResponse<ApplicationResponse>
     }
 
 }

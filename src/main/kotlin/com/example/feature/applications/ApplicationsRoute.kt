@@ -20,18 +20,8 @@ fun Route.applicationsRoute(
 ) {
     post<Applications> {
         val application = getBodyContent<Application>()
-        when(application.format){
-            "advance" -> {
-
-            }
-            "firstserved" -> {
-
-
-            }
-        }
         val response = domainProvider.provideCreateApplicationUseCase().invoke(application)
         call.respond(formatApplicationsInfo.encodeToJsonElement(response))
-
     }
 
     delete<Applications> {

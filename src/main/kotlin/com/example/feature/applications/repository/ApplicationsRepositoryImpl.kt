@@ -1,6 +1,7 @@
 package com.example.feature.applications.repository
 
 import com.example.base.http.ExceptionHandler
+import com.example.feature.applications.module.Format
 import com.example.feature.applications.service.ApplicationApiService
 import com.example.util.BaseResponse
 import com.example.util.SuccessResponse
@@ -12,8 +13,8 @@ class ApplicationsRepositoryImpl(
     private val exceptionHandler: ExceptionHandler
 
 ) : ApplicationsRepository {
-    override suspend fun createApplication(userId: String, courseId: String): BaseResponse<Any> {
-        val isCreated = applicationApiService.createApplication(userId, courseId)
+    override suspend fun createApplication(userId: String, courseId: String, format: Format): BaseResponse<Any> {
+        val isCreated = applicationApiService.createApplication(userId, courseId, format)
         return if (isCreated) {
             SuccessResponse(statusCode = HttpStatusCode.Created)
         } else {
